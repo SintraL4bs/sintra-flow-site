@@ -78,21 +78,26 @@
     .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
 
     /* mockups */
-    .stack{position:relative;min-height:440px}
+    .stack{position:relative;min-height:470px}
     .phone{width:290px;border-radius:30px;border:1px solid var(--line);background:linear-gradient(180deg,#0a1730,#050d1e);padding:14px 12px 18px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 60px -20px rgba(23,107,255,.4);position:relative;z-index:3}
     .phone .top{display:flex;align-items:center;gap:9px;padding:4px 8px 12px}
     .phone .top .av{width:30px;height:30px;border-radius:50%;background:var(--grad)}
     .phone .top .who{font-size:12px;font-weight:700}
     .phone .top .st{font-size:10px;color:var(--green)}
-    .bub{max-width:82%;padding:9px 12px;border-radius:14px;font-size:12.5px;margin-bottom:8px;line-height:1.45}
+    .chat{display:flex;flex-direction:column;justify-content:flex-end;min-height:352px}
+    .bub{max-width:82%;padding:9px 12px;border-radius:14px;font-size:12.5px;margin-bottom:8px;line-height:1.45;display:none}
+    .bub.show{display:block;animation:bubIn .35s ease both}
+    .typing-ind{display:none}
+    .typing-ind.show{display:block;animation:bubIn .3s ease both}
+    @keyframes bubIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
     .bub.in{background:#12213f;color:var(--txt);border-bottom-left-radius:4px}
     .bub.out{background:linear-gradient(135deg,#176bff,#0b3aa0);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
     .bub b{font-weight:700}
-    .typing{display:inline-flex;gap:3px;padding:10px 12px}
+    .typing{display:inline-flex;gap:3px;padding:10px 12px;background:#12213f;border-radius:14px;border-bottom-left-radius:4px}
     .typing i{width:5px;height:5px;border-radius:50%;background:var(--txt3);animation:td 1.2s infinite}
     .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
     @keyframes td{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
-    .dash{position:absolute;right:-8px;bottom:6px;width:275px;border-radius:16px;padding:16px;z-index:2}
+    .dash{position:absolute;right:-16px;bottom:-30px;width:268px;border-radius:16px;padding:16px;z-index:5;box-shadow:0 30px 70px -20px rgba(0,0,0,.9)}
     .dash .dh{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--txt2);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
     .dash .dh .ex{font-size:8px;color:var(--txt3);border:1px solid var(--line);border-radius:100px;padding:1px 6px;letter-spacing:.04em}
     .dash .kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px}
@@ -145,6 +150,16 @@
     .naoe-item{display:flex;gap:10px;align-items:center;background:rgba(255,122,122,.05);border:1px solid rgba(255,122,122,.18);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--txt)}
     .naoe-item .x{color:#ff7a7a;font-weight:800;flex-shrink:0}
     @media(max-width:700px){.naoe-grid{grid-template-columns:1fr}}
+    .veja-grid{display:grid;grid-template-columns:1fr 0.9fr;gap:48px;align-items:center;margin-top:36px}
+    .veja-steps{list-style:none;display:flex;flex-direction:column;gap:22px}
+    .veja-steps li{display:flex;gap:14px;align-items:flex-start}
+    .veja-steps .vn{flex-shrink:0;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2);color:var(--blue2);font-weight:800;font-size:14px}
+    .veja-steps b{display:block;font-size:15px;font-weight:700;margin-bottom:2px}
+    .veja-steps li span:last-child{color:var(--txt2);font-size:13.5px}
+    .veja-phone{display:flex;flex-direction:column;align-items:center;gap:14px}
+    .vstatus{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;color:var(--txt2);border-radius:100px;padding:8px 16px}
+    .vsdot{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue);animation:pulse 1.4s ease-in-out infinite;flex-shrink:0}
+    @media(max-width:900px){.veja-grid{grid-template-columns:1fr;gap:30px}}
     .intel-list{list-style:none;display:flex;flex-direction:column;gap:16px}
     .intel-list li{display:flex;gap:12px;align-items:flex-start}
     .intel-list .ck{color:var(--blue2);flex-shrink:0;margin-top:2px}
@@ -291,11 +306,13 @@
       <div class="stack">
         <div class="phone glass">
           <div class="top"><div class="av"></div><div><div class="who">Sua Loja</div><div class="st">● online</div></div></div>
-          <div class="bub in">Boa tarde! Quanto fica 100 cartões de visita, couché, frente e verso?</div>
-          <div class="bub out">Oi! No couché 300g, 4x4, <b>100 unidades sai R$ 89,00</b>, pronto em 3 dias úteis. Quer que eu já reserve?</div>
-          <div class="bub in">E se for 500?</div>
-          <div class="bub out">500 unidades fica <b>R$ 179,00</b>, mesmo prazo. Fecho o pedido?</div>
-          <div class="bub in" style="background:none;padding:0"><span class="typing glass" style="border-radius:14px"><i></i><i></i><i></i></span></div>
+          <div class="chat" id="chat">
+            <div class="bub in">Boa tarde! Quanto fica 100 cartões de visita, couché, frente e verso?</div>
+            <div class="bub out">Oi! No couché 300g, 4x4, <b>100 unidades sai R$ 89,00</b>, pronto em 3 dias úteis. Quer que eu já reserve?</div>
+            <div class="bub in">E se for 500?</div>
+            <div class="bub out">500 unidades fica <b>R$ 179,00</b>, mesmo prazo. Fecho o pedido?</div>
+            <div class="typing-ind" id="typing"><span class="typing"><i></i><i></i><i></i></span></div>
+          </div>
         </div>
         <div class="dash glass">
           <div class="dh">Painel comercial <span class="ex">exemplo</span></div>
@@ -360,6 +377,41 @@
         <p>Cada conversa alimenta um painel: o que foi cotado, o que fechou e as oportunidades que passaram por ali.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VEJA FUNCIONANDO -->
+<section class="sec" id="veja">
+  <div class="wrap">
+    <div class="eyebrow rev">Veja funcionando</div>
+    <h2 class="rev">Um minuto de conversa, de ponta a ponta.</h2>
+    <p class="lead rev">Do "oi" ao orçamento registrado, com os preços da sua tabela e respeitando as suas regras. É o produto funcionando.</p>
+    <div class="veja-grid">
+      <ul class="veja-steps rev">
+        <li><span class="vn">1</span><div><b>O cliente pergunta</b><span>Em linguagem natural, do jeito que ele escreveria pra qualquer loja.</span></div></li>
+        <li><span class="vn">2</span><div><b>O Flow entende e consulta sua tabela</b><span>Identifica o que ele quer e busca preço e prazo no que você cadastrou.</span></div></li>
+        <li><span class="vn">3</span><div><b>Cota exato, respeitando suas regras</b><span>Preço calculado, prazo real, e só oferece o que a loja faz de verdade.</span></div></li>
+        <li><span class="vn">4</span><div><b>Registra no painel</b><span>O orçamento vira dado comercial, pronto pra você acompanhar.</span></div></li>
+      </ul>
+      <div class="veja-phone">
+        <div class="vstatus glass" id="vstatus"><span class="vsdot"></span><span id="vstext">Conversa iniciada</span></div>
+        <div class="phone glass">
+          <div class="top"><div class="av"></div><div><div class="who">Gráfica Modelo</div><div class="st">● online</div></div></div>
+          <div class="chat" id="chat2">
+            <div class="bub in">Boa tarde! Preciso de 200 camisetas pretas com estampa na frente. Quanto fica?</div>
+            <div class="bub out">Boa tarde! A estampa é em serigrafia ou DTF?</div>
+            <div class="bub in">DTF.</div>
+            <div class="bub out">Fechado. 200 camisetas pretas, estampa DTF na frente: <b>R$ 4.980,00</b> (R$ 24,90 cada), prazo de <b>6 dias úteis</b>. Registro o pedido?</div>
+            <div class="bub in">Vocês entregam?</div>
+            <div class="bub out">Entregamos em BH, taxa de R$ 30. Fora de BH, combino com você. Sigo com o pedido?</div>
+            <div class="typing-ind" id="typing2"><span class="typing"><i></i><i></i><i></i></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--txt3);margin-top:26px">Demonstração do produto. Valores e loja ilustrativos.</p>
   </div>
 </section>
 
@@ -535,7 +587,7 @@
 <!-- SIMULADOR DE ROI -->
 <section class="sec" id="simulador">
   <div class="wrap">
-    <iframe id="sim-frame" src="/simulador" title="Simulador de retorno do Sintra Flow" style="width:100%;border:0;overflow:hidden;display:block" scrolling="no"></iframe>
+    <iframe id="sim-frame" src="/simulador.html" title="Simulador de retorno do Sintra Flow" style="width:100%;border:0;overflow:hidden;display:block" scrolling="no"></iframe>
   </div>
 </section>
 <script>
@@ -660,6 +712,60 @@
   var b=document.querySelector('.burger'), l=document.querySelector('.nav-links'); if(!b||!l) return;
   b.addEventListener('click',function(){ var o=l.classList.toggle('open'); b.classList.toggle('open',o); });
   l.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ l.classList.remove('open'); b.classList.remove('open'); }); });
+})();
+
+// Animação da conversa no mockup (balão a balão + digitando)
+(function(){
+  var chat=document.getElementById('chat'); if(!chat) return;
+  var bubs=chat.querySelectorAll('.bub'), typing=document.getElementById('typing');
+  if(!bubs.length||!typing) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    bubs.forEach(function(b){b.classList.add('show');}); typing.classList.add('show'); return;
+  }
+  var timers=[];
+  function at(ms,fn){ timers.push(setTimeout(fn,ms)); }
+  function reset(){ timers.forEach(clearTimeout); timers=[]; bubs.forEach(function(b){b.classList.remove('show');}); typing.classList.remove('show'); }
+  function run(){
+    reset();
+    at(500,  function(){ bubs[0].classList.add('show'); });                                  // balão escuro (cliente)
+    at(1600, function(){ bubs[1].classList.add('show'); });                                  // azul (resposta)
+    at(2900, function(){ typing.classList.add('show'); });                                   // cliente digitando
+    at(4200, function(){ typing.classList.remove('show'); bubs[2].classList.add('show'); }); // cliente manda "E se for 500?"
+    at(5200, function(){ bubs[3].classList.add('show'); });                                  // azul (resposta)
+    at(6300, function(){ typing.classList.add('show'); });                                   // mantém o digitando
+    at(10500, run);                                                                          // recomeça
+  }
+  run();
+})();
+
+// Conversa completa da seção "Veja funcionando" (com status)
+(function(){
+  var chat=document.getElementById('chat2'); if(!chat) return;
+  var bubs=chat.querySelectorAll('.bub'), typing=document.getElementById('typing2'), st=document.getElementById('vstext');
+  if(!bubs.length) return;
+  function status(t){ if(st) st.textContent=t; }
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    bubs.forEach(function(b){b.classList.add('show');}); if(typing)typing.classList.add('show'); status('Orçamento registrado no painel'); return;
+  }
+  var timers=[];
+  function at(ms,fn){ timers.push(setTimeout(fn,ms)); }
+  function reset(){ timers.forEach(clearTimeout); timers=[]; bubs.forEach(function(b){b.classList.remove('show');}); if(typing)typing.classList.remove('show'); }
+  function run(){
+    reset(); status('Conversa iniciada');
+    at(500,  function(){ bubs[0].classList.add('show'); status('Entendendo o pedido...'); });
+    at(1800, function(){ bubs[1].classList.add('show'); });
+    at(2900, function(){ bubs[2].classList.add('show'); status('Consultando sua tabela...'); });
+    at(4200, function(){ bubs[3].classList.add('show'); status('Preço e prazo calculados'); });
+    at(5700, function(){ bubs[4].classList.add('show'); });
+    at(6900, function(){ bubs[5].classList.add('show'); status('Regra de entrega respeitada'); });
+    at(8300, function(){ if(typing)typing.classList.add('show'); status('Orçamento registrado no painel'); });
+    at(12500, run);
+  }
+  var started=false;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting && !started){ started=true; run(); } }); }, {threshold:0.3});
+    io.observe(chat);
+  } else { run(); }
 })();
 
 // Formulário
