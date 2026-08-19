@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sintra Flow | Atendimento, orçamento e inteligência comercial no WhatsApp</title>
+  <meta name="description" content="O Sintra Flow atende seus clientes no WhatsApp, gera orçamentos com os preços da sua tabela (sem inventar) e transforma as conversas em inteligência comercial. Automação com controle.">
+  <link rel="canonical" href="https://sintraflow.com.br/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sintra Flow">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://sintraflow.com.br/">
+  <meta property="og:title" content="Sintra Flow | Inteligência comercial no WhatsApp">
+  <meta property="og:description" content="Atende, orça sem inventar preço e vira dado comercial. Automação com controle e IA que não inventa informação.">
+  <meta property="og:image" content="https://sitesintra.vercel.app/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='27 16 45 70'%3E%3Crect width='100' height='100' fill='%23020812'/%3E%3Cpolygon fill='white' points='55.4,20.4 30.8,34.5 29.3,35.3 29.3,43.6 29.3,51.8 30.4,52.5 36.0,55.7 40.3,58.4 43.0,56.9 51.1,52.0 42.6,46.4 40.3,44.9 40.6,43.1 56.7,33.6 59.7,31.9 59.7,25.0 59.6,18.1'/%3E%3Cpolygon fill='%23176bff' points='58.1,47.9 58.0,56.3 54.5,58.4 47.6,62.6 41.3,66.3 38.1,68.3 37.9,75.4 37.9,82.7 38.3,82.8 43.5,79.6 52.1,74.4 62.7,68.1 69.7,63.8 69.9,55.0 69.9,46.5 68.2,45.4 58.3,39.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#020812; --bg2:#06142f; --bg3:#0a1e45;
+      --blue:#176bff; --blue2:#5aa0ff; --deep:#0b3aa0;
+      --line:rgba(255,255,255,0.08); --line2:rgba(23,107,255,0.35);
+      --glass:rgba(255,255,255,0.04);
+      --txt:#eaf0fb; --txt2:#9fb0ce; --txt3:#5b6f97;
+      --green:#4ade80;
+      --grad:linear-gradient(135deg,#176bff,#0b3aa0);
+      --grad-txt:linear-gradient(100deg,#5aa0ff,#176bff);
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--txt);font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,h4{letter-spacing:-0.02em;line-height:1.12}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+    .gt{background:var(--grad-txt);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--blue2);margin-bottom:14px}
+    .sec{position:relative;padding:96px 0}
+    .sec h2{font-size:clamp(26px,4vw,42px);font-weight:800}
+    .sec .lead{color:var(--txt2);font-size:clamp(15px,1.6vw,18px);margin-top:16px;max-width:680px}
+    .glass{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line)}
+
+    /* buttons */
+    .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:transform .2s,box-shadow .2s,border-color .2s,color .2s}
+    .btn-primary{background:var(--grad);color:#fff;box-shadow:0 0 30px rgba(23,107,255,.4)}
+    .btn-primary:hover{box-shadow:0 0 50px rgba(23,107,255,.6);transform:translateY(-2px)}
+    .btn-ghost{background:transparent;color:var(--txt2);border:1px solid var(--line)}
+    .btn-ghost:hover{border-color:var(--line2);color:var(--txt)}
+
+    /* nav */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(2,8,18,0.65);backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:11px}
+    .brand svg{height:30px;flex-shrink:0}
+    .brand .wm{font-size:19px;font-weight:800;letter-spacing:-0.02em}
+    .brand .wm span{color:var(--blue2)}
+    .brand .pro{font-size:9px;font-weight:800;letter-spacing:.08em;color:var(--blue2);border:1px solid var(--line2);border-radius:100px;padding:2px 7px;text-transform:uppercase}
+    .nav-links{display:flex;gap:30px;align-items:center;list-style:none}
+    .nav-links a{color:var(--txt2);font-size:14px;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--txt)}
+    .burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;background:none;border:none;cursor:pointer;padding:9px}
+    .burger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:.25s}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* hero */
+    #flowCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+    .hero{position:relative;z-index:2;padding:150px 0 90px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center}
+    .hero .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#a8e6c1;background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.28);padding:6px 14px;border-radius:100px}
+    .hero .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(74,222,128,.8);animation:pulse 1.6s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+    .hero h1{font-size:clamp(32px,4.6vw,54px);font-weight:800;margin:22px 0 0}
+    .hero p.sub{color:var(--txt2);font-size:clamp(15px,1.7vw,18px);margin-top:20px;max-width:560px}
+    .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+
+    /* mockups */
+    .stack{position:relative;min-height:440px}
+    .phone{width:290px;border-radius:30px;border:1px solid var(--line);background:linear-gradient(180deg,#0a1730,#050d1e);padding:14px 12px 18px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 60px -20px rgba(23,107,255,.4);position:relative;z-index:3}
+    .phone .top{display:flex;align-items:center;gap:9px;padding:4px 8px 12px}
+    .phone .top .av{width:30px;height:30px;border-radius:50%;background:var(--grad)}
+    .phone .top .who{font-size:12px;font-weight:700}
+    .phone .top .st{font-size:10px;color:var(--green)}
+    .bub{max-width:82%;padding:9px 12px;border-radius:14px;font-size:12.5px;margin-bottom:8px;line-height:1.45}
+    .bub.in{background:#12213f;color:var(--txt);border-bottom-left-radius:4px}
+    .bub.out{background:linear-gradient(135deg,#176bff,#0b3aa0);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+    .bub b{font-weight:700}
+    .typing{display:inline-flex;gap:3px;padding:10px 12px}
+    .typing i{width:5px;height:5px;border-radius:50%;background:var(--txt3);animation:td 1.2s infinite}
+    .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+    @keyframes td{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+    .dash{position:absolute;right:-8px;bottom:6px;width:275px;border-radius:16px;padding:16px;z-index:2}
+    .dash .dh{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--txt2);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+    .dash .dh .ex{font-size:8px;color:var(--txt3);border:1px solid var(--line);border-radius:100px;padding:1px 6px;letter-spacing:.04em}
+    .dash .kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .kpi{background:rgba(23,107,255,.06);border:1px solid var(--line);border-radius:11px;padding:11px}
+    .kpi .l{font-size:9.5px;color:var(--txt2)}
+    .kpi .v{font-size:18px;font-weight:800;margin-top:2px}
+    .kpi .v.g{color:var(--green)}
+    .bars{display:flex;align-items:flex-end;gap:5px;height:38px;margin-top:12px}
+    .bars i{flex:1;background:var(--grad);border-radius:3px 3px 0 0;opacity:.85}
+
+    /* problem */
+    .prob{border-radius:22px;padding:clamp(30px,5vw,52px);background:linear-gradient(160deg,rgba(23,107,255,.07),transparent)}
+    .prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+    .prob-item{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--txt2)}
+    .prob-item .x{color:#ff7a7a;flex-shrink:0;font-weight:800}
+    .prob .flip{margin-top:26px;font-size:clamp(17px,2vw,20px);font-weight:600;color:var(--txt)}
+
+    /* layers */
+    .layers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+    .layer{border-radius:16px;padding:26px 22px;transition:transform .25s,box-shadow .25s,border-color .25s}
+    .layer:hover{transform:translateY(-6px);box-shadow:0 24px 55px -26px rgba(23,107,255,.6);border-color:var(--line2)}
+    .layer .ic{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2);margin-bottom:16px}
+    .layer .n{font-size:11px;font-weight:800;color:var(--blue2);letter-spacing:.1em}
+    .layer h3{font-size:18px;font-weight:700;margin:8px 0}
+    .layer p{color:var(--txt2);font-size:13.5px}
+    .ico{width:26px;height:26px;stroke:var(--blue);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+    /* intelligence dashboard */
+    .intel{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+    .intel-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:44px;align-items:center;margin-top:20px}
+    .board{border-radius:20px;padding:26px}
+    .board .bt{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .board .bt h4{font-size:14px;font-weight:700}
+    .board .bt .ex{font-size:10px;color:var(--txt3);border:1px solid var(--line);border-radius:100px;padding:3px 10px}
+    .metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .metric{background:rgba(23,107,255,.05);border:1px solid var(--line);border-radius:14px;padding:18px}
+    .metric .l{font-size:12px;color:var(--txt2)}
+    .metric .v{font-size:26px;font-weight:800;margin-top:4px}
+    .metric .v.g{color:var(--green)}
+    .metric .d{font-size:11px;color:var(--txt3);margin-top:3px}
+    .pl-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin:22px 0 12px}
+    .prodlist{display:flex;flex-direction:column;gap:8px}
+    .pl-row{display:flex;align-items:center;gap:10px;background:rgba(23,107,255,.05);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+    .pl-name{flex:1;font-size:13px;font-weight:600;color:var(--txt)}
+    .pl-c{font-size:12px;color:var(--txt2);white-space:nowrap}
+    .pl-v{font-size:13px;font-weight:700;color:var(--green);white-space:nowrap;min-width:80px;text-align:right}
+    .pl-row.op .pl-v{font-style:italic}
+    .naoe{border:1px solid rgba(255,122,122,.22);border-radius:18px;background:rgba(255,122,122,.04);padding:clamp(26px,4vw,40px);margin-top:32px}
+    .naoe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .naoe-item{display:flex;gap:10px;align-items:center;background:rgba(255,122,122,.05);border:1px solid rgba(255,122,122,.18);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--txt)}
+    .naoe-item .x{color:#ff7a7a;font-weight:800;flex-shrink:0}
+    @media(max-width:700px){.naoe-grid{grid-template-columns:1fr}}
+    .intel-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+    .intel-list li{display:flex;gap:12px;align-items:flex-start}
+    .intel-list .ck{color:var(--blue2);flex-shrink:0;margin-top:2px}
+    .intel-list b{font-weight:700}
+    .intel-list span{color:var(--txt2);font-size:14.5px}
+
+    /* comparison */
+    .cmp{overflow:hidden;border-radius:18px;border:1px solid var(--line);margin-top:36px}
+    .cmp table{width:100%;border-collapse:collapse}
+    .cmp th,.cmp td{padding:16px 20px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line)}
+    .cmp thead th{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--txt2);background:rgba(255,255,255,.02)}
+    .cmp thead th.hl{color:var(--blue2)}
+    .cmp td:first-child{color:var(--txt2)}
+    .cmp td.no{color:#ff9a9a}
+    .cmp td.yes{color:var(--green);font-weight:600}
+    .cmp tbody tr:last-child td{border-bottom:none}
+    .cmp .colhl{background:rgba(23,107,255,.06)}
+
+    /* tech / sectors grids */
+    .grid4{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+    .tcard{border-radius:16px;padding:24px;transition:transform .25s,border-color .25s}
+    .tcard:hover{transform:translateY(-5px);border-color:var(--line2)}
+    .tcard .ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2);margin-bottom:14px}
+    .tcard h3{font-size:16px;font-weight:700;margin-bottom:7px}
+    .tcard p{color:var(--txt2);font-size:13.5px}
+    .sectors{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+    .sector{border-radius:14px;padding:22px 16px;text-align:center;transition:transform .2s,border-color .2s;background:var(--glass)}
+    .sector:hover{transform:translateY(-4px);border-color:var(--line2)}
+    .sector .ic{margin:0 auto 10px}
+    .sector span{font-size:13.5px;font-weight:600;color:var(--txt)}
+
+    /* steps */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;counter-reset:s}
+    .step{border-radius:16px;padding:26px 22px;position:relative}
+    .step .num{font-size:34px;font-weight:800;background:var(--grad-txt);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+    .step h3{font-size:16px;font-weight:700;margin:12px 0 7px}
+    .step p{color:var(--txt2);font-size:13.5px}
+
+    /* faq */
+    .faq{max-width:820px;margin:36px auto 0}
+    .faq details{border-bottom:1px solid var(--line)}
+    .faq summary{cursor:pointer;list-style:none;padding:20px 4px;font-size:16px;font-weight:600;display:flex;justify-content:space-between;gap:16px;align-items:center}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";color:var(--blue);font-size:22px;font-weight:400;flex-shrink:0}
+    .faq details[open] summary::after{content:"−"}
+    .faq details p{color:var(--txt2);font-size:15px;padding:0 4px 20px}
+
+    /* final cta / form */
+    .final{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+    .final-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+    .final h2{font-size:clamp(26px,3.8vw,40px);font-weight:800}
+    .final p.lead{margin-top:16px}
+    .final-points{display:flex;flex-direction:column;gap:13px;margin-top:28px}
+    .final-points .fp{display:flex;gap:11px;align-items:center;color:var(--txt2);font-size:14.5px}
+    .final-points .fp span{color:var(--green)}
+    .formcard{border-radius:20px;padding:32px}
+    .fg{margin-bottom:16px}
+    .fg label{display:block;font-size:13px;font-weight:600;color:var(--txt2);margin-bottom:7px}
+    .fg input,.fg select,.fg textarea{width:100%;padding:13px 15px;border-radius:11px;border:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--txt);font-size:15px;font-family:inherit;transition:border-color .2s}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--line2)}
+    .fg input::placeholder,.fg textarea::placeholder{color:var(--txt3)}
+    .fg select option{background:#0a1730;color:#fff}
+    .fsub{width:100%;padding:16px;border-radius:12px;border:none;background:var(--grad);color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 0 30px rgba(23,107,255,.4);transition:box-shadow .2s,transform .2s}
+    .fsub:hover{box-shadow:0 0 50px rgba(23,107,255,.6);transform:translateY(-2px)}
+    .fsub:disabled{opacity:.6;transform:none}
+    .fmicro{text-align:center;font-size:12px;color:var(--txt3);margin-top:14px}
+    #f-ok{display:none;text-align:center;padding:40px 16px}
+    #f-ok .ck{width:66px;height:66px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:30px}
+
+    footer{border-top:1px solid var(--line);padding:40px 0;position:relative;z-index:2}
+    .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+    .foot a.brand span{color:var(--blue2)}
+    .foot .fl{display:flex;gap:22px;flex-wrap:wrap}
+    .foot .fl a{color:var(--txt2);font-size:14px}
+    .foot .fl a:hover{color:var(--txt)}
+    .foot .cr{color:var(--txt3);font-size:13px}
+
+    /* reveal */
+    .rev{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+    .rev.vis{opacity:1;transform:none}
+    .divider{height:1px;background:var(--line);max-width:1180px;margin:0 auto}
+
+    /* responsive */
+    @media(max-width:900px){
+      nav{padding:0 20px}
+      .nav-links{position:fixed;top:66px;left:0;right:0;flex-direction:column;gap:0;align-items:stretch;background:rgba(2,8,18,.98);backdrop-filter:blur(22px);border-bottom:1px solid var(--line);padding:6px 0;transform:translateY(-160%);transition:transform .3s;z-index:90}
+      .nav-links.open{transform:translateY(0)}
+      .nav-links a{display:block;padding:15px 24px}
+      .nav .btn{display:none}
+      .burger{display:flex}
+      .hero-grid,.intel-grid,.final-grid,.prob-grid{grid-template-columns:1fr}
+      .layers,.steps,.sectors{grid-template-columns:1fr 1fr}
+      .grid4{grid-template-columns:1fr}
+      .stack{min-height:auto;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:20px}
+      .phone{width:100%;max-width:320px}
+      .dash{position:relative;right:auto;bottom:auto;width:100%;max-width:340px}
+      .sec{padding:66px 0}
+      .cmp{overflow-x:auto}
+    }
+    @media(max-width:520px){
+      .layers,.steps,.sectors,.metrics,.prob-grid{grid-template-columns:1fr}
+      .hero .cta .btn{width:100%;justify-content:center}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .rev{opacity:1!important;transform:none!important;transition:none!important}
+      .hero .badge .dot{animation:none}
+      #flowCanvas{display:none}
+    }
+  </style>
+</head>
+<body>
+<canvas id="flowCanvas"></canvas>
+
+<nav>
+  <a href="#" class="brand" aria-label="Sintra Flow">
+    <svg viewBox="27 16 45 70" xmlns="http://www.w3.org/2000/svg"><polygon fill="#fff" points="55.4,20.4 30.8,34.5 29.3,35.3 29.3,43.6 29.3,51.8 30.4,52.5 36.0,55.7 40.3,58.4 43.0,56.9 51.1,52.0 42.6,46.4 40.3,44.9 40.6,43.1 56.7,33.6 59.7,31.9 59.7,25.0 59.6,18.1"/><polygon fill="#176bff" points="58.1,47.9 58.0,56.3 54.5,58.4 47.6,62.6 41.3,66.3 38.1,68.3 37.9,75.4 37.9,82.7 38.3,82.8 43.5,79.6 52.1,74.4 62.7,68.1 69.7,63.8 69.9,55.0 69.9,46.5 68.2,45.4 58.3,39.5"/></svg>
+    <span class="wm">Sintra <span>Flow</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problema">Problema</a></li>
+    <li><a href="#como">Como funciona</a></li>
+    <li><a href="#inteligencia">Inteligência</a></li>
+    <li><a href="#comparativo">Comparativo</a></li>
+    <li><a href="#setores">Setores</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#demo" class="btn btn-primary" style="padding:10px 20px;font-size:14px">Agendar demonstração</a>
+  <button class="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="badge"><span class="dot"></span>Sintra Flow</span>
+        <h1>Seu WhatsApp, agora com <span class="gt">atendimento, orçamento e inteligência comercial</span>.</h1>
+        <p class="sub">O Sintra Flow atende seus clientes, consulta seus produtos e regras, gera orçamentos sem inventar preços e transforma cada conversa em oportunidade comercial. Automação com controle, IA que não inventa informação.</p>
+        <div class="cta">
+          <a href="#demo" class="btn btn-primary">Agendar demonstração</a>
+          <a href="#como" class="btn btn-ghost">Ver o fluxo ↓</a>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="phone glass">
+          <div class="top"><div class="av"></div><div><div class="who">Sua Loja</div><div class="st">● online</div></div></div>
+          <div class="bub in">Boa tarde! Quanto fica 100 cartões de visita, couché, frente e verso?</div>
+          <div class="bub out">Oi! No couché 300g, 4x4, <b>100 unidades sai R$ 89,00</b>, pronto em 3 dias úteis. Quer que eu já reserve?</div>
+          <div class="bub in">E se for 500?</div>
+          <div class="bub out">500 unidades fica <b>R$ 179,00</b>, mesmo prazo. Fecho o pedido?</div>
+          <div class="bub in" style="background:none;padding:0"><span class="typing glass" style="border-radius:14px"><i></i><i></i><i></i></span></div>
+        </div>
+        <div class="dash glass">
+          <div class="dh">Painel comercial <span class="ex">exemplo</span></div>
+          <div class="kpis">
+            <div class="kpi"><div class="l">Valor cotado (mês)</div><div class="v">R$ 48,2k</div></div>
+            <div class="kpi"><div class="l">Orçamentos aceitos</div><div class="v g">62%</div></div>
+          </div>
+          <div class="bars"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:70%"></i><i style="height:95%"></i><i style="height:85%"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 1. PROBLEMA -->
+<section class="sec" id="problema">
+  <div class="wrap">
+    <div class="prob rev glass">
+      <div class="eyebrow">O problema</div>
+      <h2>O WhatsApp vende. Mas também esconde seus gargalos.</h2>
+      <p class="lead">Todo dia passam pedidos, dúvidas e orçamentos por ali. E some tudo junto: o que você perdeu por demora, quanto cotou, o que o cliente pediu e você não tinha. A venda acontece no escuro.</p>
+      <div class="prob-grid">
+        <div class="prob-item"><span class="x">✕</span> Cliente espera resposta e fecha com o concorrente.</div>
+        <div class="prob-item"><span class="x">✕</span> Orçamento feito na correria, com preço "de cabeça".</div>
+        <div class="prob-item"><span class="x">✕</span> Ninguém sabe quanto foi cotado nem quanto virou venda.</div>
+        <div class="prob-item"><span class="x">✕</span> Demanda que você não atende se perde sem registro.</div>
+      </div>
+      <p class="flip">O Flow atende no seu lugar com os <span class="gt">seus preços e regras</span>, e ainda te devolve, em dados, tudo o que passou pela conversa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. COMO FUNCIONA -->
+<section class="sec" id="como">
+  <div class="wrap">
+    <div class="eyebrow rev">Como funciona</div>
+    <h2 class="rev">As 4 camadas do Flow.</h2>
+    <p class="lead rev">Uma camada faz o trabalho da anterior valer mais: atende, orça, controla e vira inteligência.</p>
+    <div class="layers">
+      <div class="layer glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M8.5 10.5l2 2 4-4"/></svg></div>
+        <div class="n">01 · ATENDIMENTO</div>
+        <h3>Responde na hora</h3>
+        <p>Atende 24/7 no tom da sua loja, tira dúvidas e conduz o cliente até o pedido, sem deixar ninguém esperando.</p>
+      </div>
+      <div class="layer glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M4 4h8l8 8-8 8-8-8V4z"/><circle cx="8.5" cy="8.5" r="1.3"/></svg></div>
+        <div class="n">02 · ORÇAMENTO</div>
+        <h3>Cota sem inventar</h3>
+        <p>Preço e prazo saem da sua tabela, calculados, inclusive por m² ou por metro. Nunca chutados pela IA.</p>
+      </div>
+      <div class="layer glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="n">03 · CONTROLE</div>
+        <h3>Respeita suas regras</h3>
+        <p>Só oferece o que você define. Não promete o que a loja não faz e passa pra um humano na hora certa.</p>
+      </div>
+      <div class="layer glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16l3-4 3 2 5-7"/></svg></div>
+        <div class="n">04 · INTELIGÊNCIA</div>
+        <h3>Vira dado comercial</h3>
+        <p>Cada conversa alimenta um painel: o que foi cotado, o que fechou e as oportunidades que passaram por ali.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 3. INTELIGÊNCIA COMERCIAL -->
+<section class="sec intel" id="inteligencia">
+  <div class="wrap">
+    <div class="eyebrow rev">Inteligência comercial</div>
+    <h2 class="rev">A conversa vira número. O número vira decisão.</h2>
+    <div class="intel-grid">
+      <div class="board glass rev">
+        <div class="bt"><h4>Painel do mês</h4><span class="ex">dados de exemplo</span></div>
+        <div class="metrics">
+          <div class="metric"><div class="l">Valor cotado</div><div class="v">R$ 48,2k</div><div class="d">em 214 orçamentos</div></div>
+          <div class="metric"><div class="l">Ticket médio</div><div class="v">R$ 320</div><div class="d">por orçamento</div></div>
+          <div class="metric"><div class="l">Orçamentos aceitos</div><div class="v g">62%</div><div class="d">taxa de conversão</div></div>
+          <div class="metric"><div class="l">Demandas não atendidas</div><div class="v">14</div><div class="d">oportunidades a recuperar</div></div>
+        </div>
+        <div class="pl-h">Produtos mais cotados</div>
+        <div class="prodlist">
+          <div class="pl-row"><span class="pl-name">Cartão 4×4 300g</span><span class="pl-c">142 cotações</span><span class="pl-v">R$ 18.940</span></div>
+          <div class="pl-row"><span class="pl-name">Adesivo vinil</span><span class="pl-c">97 cotações</span><span class="pl-v">R$ 11.260</span></div>
+          <div class="pl-row"><span class="pl-name">Banner lona</span><span class="pl-c">64 cotações</span><span class="pl-v">R$ 9.830</span></div>
+          <div class="pl-row op"><span class="pl-name">Produto não cadastrado</span><span class="pl-c">31 buscas</span><span class="pl-v">oportunidade</span></div>
+        </div>
+      </div>
+      <ul class="intel-list rev">
+        <li><span class="ck">▸</span><span><b>Quanto você cotou de verdade.</b> Todo orçamento gerado fica registrado, soma do mês, não "achismo".</span></li>
+        <li><span class="ck">▸</span><span><b>O que está fechando.</b> Taxa de aceite por período, para você ver o que converte e o que trava.</span></li>
+        <li><span class="ck">▸</span><span><b>O que você está perdendo.</b> Produtos e demandas que o cliente pediu e você não tinha, sua próxima oportunidade.</span></li>
+        <li><span class="ck">▸</span><span><b>Onde a IA passou pro humano.</b> Você vê quando e por que a conversa foi transferida.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4. COMPARATIVO -->
+<section class="sec" id="comparativo">
+  <div class="wrap">
+    <div class="eyebrow rev">Comparativo</div>
+    <h2 class="rev">Chatbot comum não é a mesma coisa.</h2>
+    <div class="cmp rev glass">
+      <table>
+        <thead><tr><th>Recurso</th><th>Chatbot comum</th><th class="hl">Sintra Flow</th></tr></thead>
+        <tbody>
+          <tr><td>Preço no orçamento</td><td class="no">Inventa ou não sabe</td><td class="yes colhl">Vem da sua tabela, calculado</td></tr>
+          <tr><td>Regras da loja</td><td class="no">Genéricas</td><td class="yes colhl">Configuradas por empresa</td></tr>
+          <tr><td>Passa pra humano</td><td class="no">Raro ou confuso</td><td class="yes colhl">Na hora certa, com contexto</td></tr>
+          <tr><td>Dados comerciais</td><td class="no">Nenhum</td><td class="yes colhl">Painel de cotações e conversão</td></tr>
+          <tr><td>Conexão WhatsApp</td><td class="no">Chip/número não oficial</td><td class="yes colhl">API oficial da Meta</td></tr>
+          <tr><td>Implantação</td><td class="no">Você que se vira</td><td class="yes colhl">Configurada e gerida pela Sintra</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 5. TECNOLOGIA E SEGURANÇA -->
+<section class="sec" id="tecnologia">
+  <div class="wrap">
+    <div class="eyebrow rev">Tecnologia e segurança</div>
+    <h2 class="rev">Robusto por baixo. Simples por cima.</h2>
+    <p class="lead rev">Infraestrutura séria pra você não ter dor de cabeça, nem risco.</p>
+    <div class="grid4">
+      <div class="tcard glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M8.5 10.5l2 2 4-4"/></svg></div>
+        <h3>API oficial da Meta</h3>
+        <p>Roda pela plataforma oficial do WhatsApp (Meta Developers). Sem chip clonado, sem número de terceiro, sem risco de ban.</p>
+      </div>
+      <div class="tcard glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M4 4h8l8 8-8 8-8-8V4z"/><circle cx="8.5" cy="8.5" r="1.3"/></svg></div>
+        <h3>Regras operacionais</h3>
+        <p>Você define o que pode e o que não pode. A IA opera dentro dessas regras, sem improvisar condição que você não ofereceu.</p>
+      </div>
+      <div class="tcard glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>LGPD e dados</h3>
+        <p>Dados tratados com responsabilidade e dentro da LGPD. As conversas ficam no ambiente oficial do WhatsApp da sua empresa.</p>
+      </div>
+      <div class="tcard glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M4 20c0-3 2.5-5 5-5s5 2 5 5"/><path d="M16 11l2 2 4-4"/></svg></div>
+        <h3>Controle por empresa</h3>
+        <p>Cada loja tem sua tabela, seu tom e suas regras. Nada é genérico: o Flow fala como a sua operação fala.</p>
+      </div>
+      <div class="tcard glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M7 8h10"/><path d="M7 12h6"/><path d="M14 20l3-3-3-3"/><path d="M17 17H9a5 5 0 0 1-5-5V6"/></svg></div>
+        <h3>Transferência humana</h3>
+        <p>Em fechamento, reclamação séria ou caso fora do comum, a conversa vai pra uma pessoa da sua equipe, sem atrito.</p>
+      </div>
+      <div class="tcard glass rev">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Segurança testada</h3>
+        <p>O produto passou por rodadas de teste de invasão (pentest), com novas ondas em andamento por precaução.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 6. SETORES -->
+<section class="sec" id="setores">
+  <div class="wrap">
+    <div class="eyebrow rev">Setores atendidos</div>
+    <h2 class="rev">Feito pra quem vende pelo WhatsApp.</h2>
+    <p class="lead rev">Se o seu negócio tem catálogo, preço e prazo e responde as mesmas perguntas o dia inteiro, o Flow foi feito pra isso.</p>
+    <div class="sectors">
+      <div class="sector rev"><div class="ic" style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2)"><svg class="ico ico-sm" viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="7" rx="2"/><rect x="7" y="14" width="10" height="6" rx="1"/></svg></div><span>Gráficas</span></div>
+      <div class="sector rev"><div class="ic" style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2)"><svg class="ico ico-sm" viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M6 8h12l-1 11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z"/><path d="M9.5 8V6.5a2.5 2.5 0 0 1 5 0V8"/></svg></div><span>Lojas</span></div>
+      <div class="sector rev"><div class="ic" style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2)"><svg class="ico ico-sm" viewBox="0 0 24 24" style="width:22px;height:22px"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div><span>Oficinas</span></div>
+      <div class="sector rev"><div class="ic" style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2)"><svg class="ico ico-sm" viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M4 8l8-4 8 4-8 4-8-4z"/><path d="M6 10v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div><span>Eventos</span></div>
+      <div class="sector rev"><div class="ic" style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2)"><svg class="ico ico-sm" viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M12 4l9 4-9 4-9-4 9-4z"/><path d="M5 9.5V15c0 1.5 3 3 7 3s7-1.5 7-3V9.5"/></svg></div><span>Escolas</span></div>
+      <div class="sector rev"><div class="ic" style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2)"><svg class="ico ico-sm" viewBox="0 0 24 24" style="width:22px;height:22px"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 12h11l2-8H6"/></svg></div><span>E-commerces</span></div>
+      <div class="sector rev"><div class="ic" style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2)"><svg class="ico ico-sm" viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div><span>Comércio de bairro</span></div>
+      <div class="sector rev"><div class="ic" style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(23,107,255,.12);border:1px solid var(--line2)"><svg class="ico ico-sm" viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M4 5h16v11H8l-4 4V5z"/></svg></div><span>Quem vende no WhatsApp</span></div>
+    </div>
+
+    <div class="naoe rev">
+      <div class="eyebrow" style="color:#ff9a9a">Não é pra você se…</div>
+      <h3 style="font-size:clamp(20px,2.6vw,26px);font-weight:800;margin-bottom:8px">Seu WhatsApp é pra marcar horário, não pra vender produto.</h3>
+      <p style="color:var(--txt2);font-size:15px;margin-bottom:20px">O Flow cota preço e prazo de catálogo. Ele não faz agenda.</p>
+      <div class="naoe-grid">
+        <div class="naoe-item"><span class="x">✕</span> Clínicas e consultórios</div>
+        <div class="naoe-item"><span class="x">✕</span> Salões e barbearias</div>
+        <div class="naoe-item"><span class="x">✕</span> Estética e estúdios</div>
+      </div>
+      <p style="color:var(--txt2);font-size:13.5px;margin-top:18px;line-height:1.5">Se o seu negócio é agendamento, preferimos te dizer isso agora do que te vender o que não serve.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 7. IMPLANTAÇÃO -->
+<section class="sec" id="implantacao">
+  <div class="wrap">
+    <div class="eyebrow rev">Implantação</div>
+    <h2 class="rev">Você não monta nada. A gente coloca de pé.</h2>
+    <p class="lead rev">Do primeiro papo à operação rodando, com acompanhamento em cada etapa.</p>
+    <div class="steps">
+      <div class="step glass rev"><div class="num">01</div><h3>Diagnóstico</h3><p>Entendemos sua operação, seu catálogo e onde estão os gargalos de atendimento e orçamento.</p></div>
+      <div class="step glass rev"><div class="num">02</div><h3>Cadastro operacional</h3><p>Sua tabela de preços, prazos e regras entram no Flow, a base do que a IA pode dizer.</p></div>
+      <div class="step glass rev"><div class="num">03</div><h3>Treinamento e piloto</h3><p>Treinamos a IA na sua realidade e rodamos um piloto acompanhado antes de abrir pra todo cliente.</p></div>
+      <div class="step glass rev"><div class="num">04</div><h3>Operação assistida</h3><p>Entra no ar com a Sintra monitorando, ajustando e evoluindo junto com você.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 8. FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="eyebrow rev" style="text-align:center">FAQ</div>
+    <h2 class="rev" style="text-align:center">Perguntas frequentes</h2>
+    <div class="faq rev">
+      <details><summary>A IA pode inventar preço?</summary><p>Não. Preço e prazo vêm da tabela que você cadastra, calculados, inclusive por m² ou por metro. A IA não estima valor por conta própria.</p></details>
+      <details><summary>Funciona com o meu WhatsApp?</summary><p>Funciona com o WhatsApp comercial da sua empresa, pela API oficial da Meta. A Sintra cuida de toda a parte técnica da conexão.</p></details>
+      <details><summary>Preciso saber mexer com tecnologia?</summary><p>Não. A Sintra configura, treina e gerencia. Você usa um painel simples pra acompanhar as conversas e os números, e assume a conversa quando quiser.</p></details>
+      <details><summary>E quando o caso foge do padrão?</summary><p>A IA passa a conversa pra uma pessoa da sua equipe na hora certa, em fechamento, reclamação séria ou situação fora do comum, sempre com o contexto do que já foi conversado.</p></details>
+      <details><summary>Que dados eu recebo?</summary><p>Um painel comercial com valor cotado, ticket médio, orçamentos aceitos e demandas não atendidas, a conversa virando informação pra você decidir.</p></details>
+      <details><summary>Quanto custa?</summary><p>O valor é definido caso a caso, conforme o tamanho e as necessidades da sua operação. Agende uma demonstração e a gente conversa sobre isso pessoalmente.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CTA FINAL / FORM -->
+<div class="divider"></div>
+
+<!-- SIMULADOR DE ROI -->
+<section class="sec" id="simulador">
+  <div class="wrap">
+    <iframe id="sim-frame" src="/simulador" title="Simulador de retorno do Sintra Flow" style="width:100%;border:0;overflow:hidden;display:block" scrolling="no"></iframe>
+  </div>
+</section>
+<script>
+(function(){
+  var f=document.getElementById('sim-frame'); if(!f) return;
+  function fit(){ try{ f.style.height=(f.contentWindow.document.body.scrollHeight+2)+'px'; }catch(e){} }
+  f.addEventListener('load',function(){ fit(); setTimeout(fit,300); try{ new ResizeObserver(fit).observe(f.contentWindow.document.body); }catch(e){} });
+  window.addEventListener('resize',fit);
+})();
+</script>
+
+<section class="sec final" id="demo">
+  <div class="wrap">
+    <div class="final-grid">
+      <div class="rev">
+        <div class="eyebrow">Agende uma demonstração</div>
+        <h2>Veja o Flow atender e orçar com os dados da <span class="gt">sua loja</span>.</h2>
+        <p class="lead">Uma demonstração direta, sem enrolação: a gente mostra o atendimento, o orçamento vindo da tabela e o painel comercial funcionando.</p>
+        <div class="final-points">
+          <div class="fp"><span>✓</span> Conversa direta com quem entende do produto.</div>
+          <div class="fp"><span>✓</span> Sem compromisso e sem custo pra ver funcionando.</div>
+          <div class="fp"><span>✓</span> Você sai sabendo exatamente como encaixa no seu negócio.</div>
+        </div>
+      </div>
+      <div class="formcard glass rev">
+        <form id="demo-form" onsubmit="return submitDemo(event)">
+          <input type="hidden" name="origem" value="Demonstração Sintra Flow">
+          <input type="hidden" name="_subject" value="Nova solicitação de demonstração, Flow">
+          <div class="fg"><label>Nome *</label><input type="text" name="nome" placeholder="Seu nome" required></div>
+          <div class="fg"><label>WhatsApp *</label><input type="tel" name="whatsapp" placeholder="(31) 99999-9999" required></div>
+          <div class="fg"><label>Empresa *</label><input type="text" name="empresa" placeholder="Nome da sua empresa" required></div>
+          <div class="fg"><label>Segmento</label>
+            <select name="segmento">
+              <option value="" disabled selected>Selecione</option>
+              <option>Gráfica / papelaria</option><option>Loja / varejo</option><option>Oficina</option>
+              <option>Eventos</option><option>Escola / curso</option><option>E-commerce</option><option>Outro</option>
+            </select>
+          </div>
+          <div class="fg"><label>Email <span style="color:var(--txt3);font-weight:400">(opcional)</span></label><input type="email" name="email" placeholder="seu@email.com"></div>
+          <button type="submit" class="fsub" id="demo-btn">Agendar demonstração</button>
+          <div class="fmicro">Sem compromisso. A gente usa seu contato só pra falar sobre o Flow.</div>
+        </form>
+        <div id="f-ok">
+          <div class="ck">✓</div>
+          <h3 style="font-size:22px;font-weight:800;margin-bottom:10px">Recebido!</h3>
+          <p style="color:var(--txt2);font-size:15px;max-width:320px;margin:0 auto">A gente entra em contato pra marcar sua demonstração do Flow.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#" class="brand" style="text-decoration:none">
+      <svg viewBox="27 16 45 70" xmlns="http://www.w3.org/2000/svg" style="height:28px"><polygon fill="#fff" points="55.4,20.4 30.8,34.5 29.3,35.3 29.3,43.6 29.3,51.8 30.4,52.5 36.0,55.7 40.3,58.4 43.0,56.9 51.1,52.0 42.6,46.4 40.3,44.9 40.6,43.1 56.7,33.6 59.7,31.9 59.7,25.0 59.6,18.1"/><polygon fill="#176bff" points="58.1,47.9 58.0,56.3 54.5,58.4 47.6,62.6 41.3,66.3 38.1,68.3 37.9,75.4 37.9,82.7 38.3,82.8 43.5,79.6 52.1,74.4 62.7,68.1 69.7,63.8 69.9,55.0 69.9,46.5 68.2,45.4 58.3,39.5"/></svg>
+      <span class="wm" style="font-size:17px">Sintra <span>Flow</span></span>
+    </a>
+    <div class="fl">
+      <a href="#como">Como funciona</a>
+      <a href="#inteligencia">Inteligência</a>
+      <a href="#comparativo">Comparativo</a>
+      <a href="#demo">Demonstração</a>
+      <a href="https://sitesintra.vercel.app/" target="_blank" rel="noopener">por Sintra Labs</a>
+    </div>
+    <div class="cr">© 2026 Sintra Flow · um produto Sintra Labs · Belo Horizonte, MG</div>
+  </div>
+</footer>
+
+<script>
+// Fundo animado reativo ao scroll, orbes de fluxo azuis
+(function(){
+  var c=document.getElementById('flowCanvas'); if(!c) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ c.style.display='none'; return; }
+  var ctx=c.getContext('2d'), W,H,orbs=[],DPR=Math.min(window.devicePixelRatio||1,2), scrollY=0, tScroll=0;
+  function resize(){ W=c.width=innerWidth*DPR; H=c.height=innerHeight*DPR; c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px'; }
+  resize(); addEventListener('resize',resize);
+  addEventListener('scroll',function(){ tScroll=scrollY=window.scrollY; },{passive:true});
+  var N = innerWidth<700?5:9;
+  for(var i=0;i<N;i++){
+    orbs.push({ x:Math.random(), y:Math.random(), r:(90+Math.random()*220)*DPR, vx:(Math.random()-.5)*0.00013, vy:(Math.random()-.5)*0.00013,
+      hue: Math.random()<0.5? '23,107,255' : '90,160,255', a:0.05+Math.random()*0.10, par:0.15+Math.random()*0.5, ph:Math.random()*6.28 });
+  }
+  var t=0;
+  function draw(){
+    t+=0.006;
+    ctx.clearRect(0,0,W,H);
+    ctx.globalCompositeOperation='lighter';
+    for(var i=0;i<orbs.length;i++){
+      var o=orbs[i];
+      o.x+=o.vx; o.y+=o.vy;
+      if(o.x<-0.2)o.x=1.2; if(o.x>1.2)o.x=-0.2; if(o.y<-0.2)o.y=1.2; if(o.y>1.2)o.y=-0.2;
+      var px=o.x*W + Math.sin(t+o.ph)*20*DPR;
+      var py=o.y*H + Math.cos(t*0.8+o.ph)*20*DPR - (tScroll*DPR*o.par);
+      var g=ctx.createRadialGradient(px,py,0,px,py,o.r);
+      g.addColorStop(0,'rgba('+o.hue+','+o.a+')');
+      g.addColorStop(1,'rgba('+o.hue+',0)');
+      ctx.fillStyle=g;
+      ctx.beginPath(); ctx.arc(px,py,o.r,0,6.283); ctx.fill();
+    }
+    ctx.globalCompositeOperation='source-over';
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// Reveal on scroll + stagger
+(function(){
+  try{
+    document.querySelectorAll('.layers,.grid4,.sectors,.steps,.metrics,.prob-grid').forEach(function(g){
+      Array.prototype.forEach.call(g.children,function(ch,i){ ch.classList.add('rev'); ch.style.transitionDelay=(i*0.07)+'s'; });
+    });
+    var els=document.querySelectorAll('.rev');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('vis');}); return; }
+    var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('vis'); io.unobserve(x.target);} }); },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  }catch(e){ document.querySelectorAll('.rev').forEach(function(x){x.classList.add('vis');}); }
+})();
+
+// Menu mobile
+(function(){
+  var b=document.querySelector('.burger'), l=document.querySelector('.nav-links'); if(!b||!l) return;
+  b.addEventListener('click',function(){ var o=l.classList.toggle('open'); b.classList.toggle('open',o); });
+  l.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ l.classList.remove('open'); b.classList.remove('open'); }); });
+})();
+
+// Formulário
+async function submitDemo(e){
+  e.preventDefault();
+  var form=document.getElementById('demo-form'), btn=document.getElementById('demo-btn'), ok=document.getElementById('f-ok');
+  btn.disabled=true; btn.textContent='Enviando...';
+  try{
+    var r=await fetch('https://formspree.io/f/xykapywa',{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+    if(r.ok){ form.style.display='none'; ok.style.display='block'; }
+    else{ btn.disabled=false; btn.textContent='Agendar demonstração'; alert('Ops, algo deu errado. Tente novamente.'); }
+  }catch(err){ btn.disabled=false; btn.textContent='Agendar demonstração'; alert('Erro de conexão. Verifique sua internet.'); }
+  return false;
+}
+</script>
+</body>
+</html>
