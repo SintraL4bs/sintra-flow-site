@@ -77,13 +77,17 @@
     .hero p.sub{color:var(--txt2);font-size:clamp(15px,1.7vw,18px);margin-top:20px;max-width:560px}
     .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
 
-    /* mockups */
-    .stack{position:relative;min-height:470px}
-    .phone{width:290px;border-radius:30px;border:1px solid var(--line);background:linear-gradient(180deg,#0a1730,#050d1e);padding:14px 12px 18px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 60px -20px rgba(23,107,255,.4);position:relative;z-index:3}
-    .phone .top{display:flex;align-items:center;gap:9px;padding:4px 8px 12px}
-    .phone .top .av{width:30px;height:30px;border-radius:50%;background:var(--grad)}
-    .phone .top .who{font-size:12px;font-weight:700}
-    .phone .top .st{font-size:10px;color:var(--green)}
+    /* hero: monitor 3D com crossfade entre telas reais do produto */
+    .stack{position:relative;min-height:auto;display:flex;align-items:center;justify-content:center}
+    .stage{position:relative;width:100%;max-width:620px;margin-left:auto}
+    .hero-mon{position:relative;width:100%}
+    .hero-mon>img{display:block;width:100%;height:auto}
+    .hero-mon .scr{position:absolute;inset:0;opacity:0;animation:heroSwapB 13s ease-in-out infinite;will-change:opacity}
+    .hero-mon .scr.first{position:relative;opacity:1;animation-name:heroSwapA}
+    @keyframes heroSwapA{0%,42%{opacity:1}50%,90%{opacity:0}100%{opacity:1}}
+    @keyframes heroSwapB{0%,42%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
+    .hero-cap{text-align:center;font-size:12.5px;color:var(--txt3);margin-top:16px}
+    @media(prefers-reduced-motion:reduce){.hero-mon .scr{animation:none}.hero-mon .scr:not(.first){display:none}}
     .chat{display:flex;flex-direction:column;justify-content:flex-end;min-height:352px}
     .bub{max-width:82%;padding:9px 12px;border-radius:14px;font-size:12.5px;margin-bottom:8px;line-height:1.45;display:none}
     .bub.show{display:block;animation:bubIn .35s ease both}
@@ -97,16 +101,6 @@
     .typing i{width:5px;height:5px;border-radius:50%;background:var(--txt3);animation:td 1.2s infinite}
     .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
     @keyframes td{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
-    .dash{position:absolute;right:-16px;bottom:-30px;width:268px;border-radius:16px;padding:16px;z-index:5;box-shadow:0 30px 70px -20px rgba(0,0,0,.9)}
-    .dash .dh{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--txt2);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-    .dash .dh .ex{font-size:8px;color:var(--txt3);border:1px solid var(--line);border-radius:100px;padding:1px 6px;letter-spacing:.04em}
-    .dash .kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-    .kpi{background:rgba(23,107,255,.06);border:1px solid var(--line);border-radius:11px;padding:11px}
-    .kpi .l{font-size:9.5px;color:var(--txt2)}
-    .kpi .v{font-size:18px;font-weight:800;margin-top:2px}
-    .kpi .v.g{color:var(--green)}
-    .bars{display:flex;align-items:flex-end;gap:5px;height:38px;margin-top:12px}
-    .bars i{flex:1;background:var(--grad);border-radius:3px 3px 0 0;opacity:.85}
 
     /* problem */
     .prob{border-radius:22px;padding:clamp(30px,5vw,52px);background:linear-gradient(160deg,rgba(23,107,255,.07),transparent)}
@@ -159,6 +153,11 @@
     .veja-phone{display:flex;flex-direction:column;align-items:center;gap:14px}
     .vstatus{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;color:var(--txt2);border-radius:100px;padding:8px 16px}
     .vsdot{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue);animation:pulse 1.4s ease-in-out infinite;flex-shrink:0}
+    .veja-phone .phone{width:290px;max-width:100%;border-radius:30px;border:1px solid var(--line);background:linear-gradient(180deg,#0a1730,#050d1e);padding:14px 12px 18px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 60px -20px rgba(23,107,255,.4);position:relative;z-index:3}
+    .veja-phone .top{display:flex;align-items:center;gap:9px;padding:4px 8px 12px}
+    .veja-phone .top .av{width:30px;height:30px;border-radius:50%;background:var(--grad)}
+    .veja-phone .top .who{font-size:12px;font-weight:700}
+    .veja-phone .top .st{font-size:10px;color:var(--green)}
     @media(max-width:900px){.veja-grid{grid-template-columns:1fr;gap:30px}}
     .intel-list{list-style:none;display:flex;flex-direction:column;gap:16px}
     .intel-list li{display:flex;gap:12px;align-items:flex-start}
@@ -253,9 +252,8 @@
       .hero-grid,.intel-grid,.final-grid,.prob-grid{grid-template-columns:1fr}
       .layers,.steps,.sectors{grid-template-columns:1fr 1fr}
       .grid4{grid-template-columns:1fr}
-      .stack{min-height:auto;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:20px}
-      .phone{width:100%;max-width:320px}
-      .dash{position:relative;right:auto;bottom:auto;width:100%;max-width:340px}
+      .stack{min-height:auto;margin-top:22px}
+      .stage{max-width:540px;margin:0 auto}
       .sec{padding:66px 0}
       .cmp{overflow-x:auto}
     }
@@ -304,23 +302,12 @@
         </div>
       </div>
       <div class="stack">
-        <div class="phone glass">
-          <div class="top"><div class="av"></div><div><div class="who">Sua Loja</div><div class="st">● online</div></div></div>
-          <div class="chat" id="chat">
-            <div class="bub in">Boa tarde! Quanto fica 100 cartões de visita, couché, frente e verso?</div>
-            <div class="bub out">Oi! No couché 300g, 4x4, <b>100 unidades sai R$ 89,00</b>, pronto em 3 dias úteis. Quer que eu já reserve?</div>
-            <div class="bub in">E se for 500?</div>
-            <div class="bub out">500 unidades fica <b>R$ 179,00</b>, mesmo prazo. Fecho o pedido?</div>
-            <div class="typing-ind" id="typing"><span class="typing"><i></i><i></i><i></i></span></div>
+        <div class="stage">
+          <div class="hero-mon">
+            <img class="scr first" src="img/conversa.png" alt="Sintra Flow atendendo um cliente no WhatsApp" width="1500" height="844" loading="eager">
+            <img class="scr" src="img/painel.png" alt="Painel comercial do Sintra Flow" width="1500" height="844" loading="eager">
           </div>
-        </div>
-        <div class="dash glass">
-          <div class="dh">Painel comercial <span class="ex">exemplo</span></div>
-          <div class="kpis">
-            <div class="kpi"><div class="l">Valor cotado (mês)</div><div class="v">R$ 48,2k</div></div>
-            <div class="kpi"><div class="l">Orçamentos aceitos</div><div class="v g">62%</div></div>
-          </div>
-          <div class="bars"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:70%"></i><i style="height:95%"></i><i style="height:85%"></i></div>
+          <p class="hero-cap">Atendimento e painel comercial, no mesmo produto.</p>
         </div>
       </div>
     </div>
